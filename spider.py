@@ -66,6 +66,6 @@ def print_links(links):
 
 #print get_page('http://www.baidu.com')
 
-crawl_web('http://www.bistu.edu.cn')
+#crawl_web('http://www.bistu.edu.cn')
 
     
