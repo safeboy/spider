@@ -1,17 +1,16 @@
-from urllib2 import urlopen
-
 def get_page(url):
+    """获取网页内容"""
     try:
-        html = urlopen(url)
-        page = html.read()
-        #print page
-        return page
+        import urllib
+        return url.urlopen(url).read()
     except:
         return ""
-    return ""
     
 
 def get_next_target(page):
+    """从page中获取一个超链接
+        并且返回链接地址
+        和链接末尾的索引位置"""
     start_link = page.find('href=')
     if start_link == -1: 
         return None, 0
@@ -21,12 +20,15 @@ def get_next_target(page):
     return url, end_quote
 
 def union(p,q):
+    """合并p、q两个集合"""
     for e in q:
         if e not in p:
             p.append(e)
 
 
 def get_all_links(page):
+    """获取页面所有超链接，结果放在links
+        列表中"""
     links = []
     while True:
         url,endpos = get_next_target(page)
@@ -38,34 +40,22 @@ def get_all_links(page):
     return links
 
 def crawl_web(seed):
-    f = file('website.txt', 'w')
+    """爬虫，从种子链接seed开始"""
     tocrawl = [seed]
     crawled = []
+    index = []
     while tocrawl:
         page = tocrawl.pop()
         if page not in crawled:
-            #tocrawl = tocrawl + get_all_links( get_page(page) )
-            union(tocrawl, get_all_links( get_page(page) ) )
-            page = page + "\n"
-            print page
-            f.writelines(page)
+            content = get_page(page)
+            union(tocrawl, get_all_links( content ))
             crawled.append(page)
-    f.close()
     return crawled
 
 
 def print_links(links):
+    """打印links列表所有内容"""
     for link in links:
         print link
         
-#links = crawl_web('http://www.udacity.com/cs101x/index.html')
 
-#crawl_web('http://www.udacity.com/cs101x/index.html')
-
-#print_links(links)
-
-#print get_page('http://www.baidu.com')
-
-#crawl_web('http://www.bistu.edu.cn')
-
-    
