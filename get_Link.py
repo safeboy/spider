@@ -1,4 +1,5 @@
-#coding=GBK
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 from bs4 import BeautifulSoup
 #get all links form page
 def get_all_link(page):

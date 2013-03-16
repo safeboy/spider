@@ -1,4 +1,5 @@
-#coding=GBK
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 import os,sys
 def savePage(page, keyword, url):
     if (keyword != None ):              #the keyword is not none

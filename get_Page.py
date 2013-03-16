@@ -1,4 +1,5 @@
-#coding=GBK
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 from urllib2 import urlopen
 import os,sys
 #get page form url

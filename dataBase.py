@@ -1,6 +1,7 @@
-#coding=GBK
-#add recode into dataBase list
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 
+#add recode into dataBase list
 def add_to_dataBase(dataBase, keyword, url):
     for entry in dataBase:
         if entry[0] == keyword:

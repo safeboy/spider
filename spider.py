@@ -1,4 +1,5 @@
-#coding=GBK
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 import threadpool
 from get_Page import *
 from get_Link import *
@@ -12,6 +13,7 @@ dataBase = []                           #dataBase
 keyword = None                          #keyWord
 go = [seedUrl]                          #the list will to be crawl
 done = []                               #the list have been crawl
+
 
 def spider(url=None, k=None):
     if url != None:
@@ -40,8 +42,8 @@ def data_processing(request, result):
         pass
     else:
         add_to_dataBase(dataBase, keyword, result)
-        print result, '导入成功\n'
-        print '当前深度', deepth + 1
+        print result, '瀵煎叆鎴愬姛\n'
+        print '褰撳墠娣卞害', deepth + 1
         
         
 def main():
