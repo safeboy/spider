@@ -22,13 +22,13 @@ def spider(url=None, k=None):
         page = get_page(url)    #get page
         flag = savePage(page, keyword, url)  #if find the keyword ,flag is true
         if keyword == None:                 #keyword is none
-            all_links = get_all_link(page)  #get all links in the page
+            all_links = get_all_link(page, url)  #get all links in the page
             for item in all_links:  
                 if item not in done:        #if the link not be crawl
                     go.append(item)         # add to go[]
             return url                      #return url
         else:                               #keyword is not none
-            all_links = get_all_link(page)  
+            all_links = get_all_link(page, url)  
             for item in all_links:  
                 if item not in done: 
                     go.append(item)     
@@ -43,7 +43,7 @@ def data_processing(request, result):
     else:
         add_to_dataBase(dataBase, keyword, result)
         print result, '导入成功\n'
-        print '当前深度', deepth + 1
+        print '当前深度', deep + 1
         
         
 def main():
@@ -55,7 +55,8 @@ def main():
     pool.wait()         #wait all requests(job) end
 
 if __name__ == '__main__':
-    while deepth >= 0:      
-        deepth = deepth - 1
+    deep = deepth
+    while deep >= 0:      
+        deep = deep - 1
         main()
     print dataBase
