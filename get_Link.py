@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 from bs4 import BeautifulSoup
 from urlparse import urljoin
-#get all links form page
+#从页面获取所有链接
 def get_all_link(page, url):
     links = []
     soup = BeautifulSoup(page)
@@ -12,6 +12,7 @@ def get_all_link(page, url):
         links.append(u)
     return links
 
+#测试代码
 if __name__ == '__main__':
     from  get_Page import * 
     print "---------test start"
