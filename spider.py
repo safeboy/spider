@@ -5,7 +5,8 @@ from get_Page import *
 from get_Link import *
 from dataBase import *
 from save_Page import *
-from optionParse import * 
+from optionParse import *
+from logger import *
 
 options = optionParse()                       #处理命令行参数
 seedUrl = options.url                         #种子url
@@ -13,8 +14,11 @@ deep = options.deep                           #深度
 threadPoolSize = options.threadnumber         #线程池大小
 db_file= options.dbfile                       #数据库文件
 keyword = options.keyword                     #关键字
-go = [seedUrl]                                  #待抓取网址列表
-done = []                                       #已抓取网址列表
+go = [seedUrl]                                #待抓取网址列表
+done = []                                     #已抓取网址列表
+logfile = options.logfile                     #日志文件
+Level = options.loglevel * 10                 #日志级别
+logger = initlog(logfile, Level)              #初始化日志对象
 
 #爬虫驱动函数
 #url起始网址
@@ -51,6 +55,7 @@ def data_processing(request, result):
         add_to_dataBase(dataBase, keyword, result)
         print result.decode('utf-8') , '导入成功\n'.decode('utf-8') 
         print '当前深度'.decode('utf-8') , nowdeep
+        logger.info(result.decode('utf-8') + '导入成功\n'.decode('utf-8') )
         
        
 def main():

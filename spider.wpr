@@ -7,9 +7,9 @@
 proj.file-list = [loc('dataBase.py'),
                   loc('get_Link.py'),
                   loc('get_Page.py'),
+                  loc('logger.py'),
                   loc('optionParse.py'),
                   loc('readme.txt'),
                   loc('save_Page.py'),
-                  loc('spider.py'),
-                  loc('test.py')]
+                  loc('spider.py')]
 proj.file-type = 'shared'
