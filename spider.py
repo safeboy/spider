@@ -4,15 +4,17 @@ import threadpool
 from get_Page import *
 from get_Link import *
 from dataBase import *
-from save_Page import * 
+from save_Page import *
+from optionParse import * 
 
-seedUrl = "http://www.bistu.edu.cn"     #起点url
-deepth = 1                              #深度
-threadPoolSize = 10                     #线程池大小
-db_file='spider.db'                     #数据库文件
-keyword = None                          #关键字
-go = [seedUrl]                          #待抓取网址列表
-done = []                               #已抓取网址列表
+options = optionParse()                       #处理命令行参数
+seedUrl = options.url                         #种子url
+deep = options.deep                           #深度
+threadPoolSize = options.threadnumber         #线程池大小
+db_file= options.dbfile                       #数据库文件
+keyword = options.keyword                     #关键字
+go = [seedUrl]                                  #待抓取网址列表
+done = []                                       #已抓取网址列表
 
 #爬虫驱动函数
 #url起始网址
@@ -47,8 +49,8 @@ def data_processing(request, result):
         pass
     else:
         add_to_dataBase(dataBase, keyword, result)
-        print result, '导入成功\n'
-        print '当前深度', deep + 1
+        print result.decode('utf-8') , '导入成功\n'.decode('utf-8') 
+        print '当前深度'.decode('utf-8') , nowdeep
         
        
 def main():
@@ -62,11 +64,9 @@ def main():
 #测试代码
 if __name__ == '__main__':
     dataBase = init_dataBase(db_file, 'n')
-    
-    deep = deepth
-    while deep >= 0:      
-        deep = deep - 1
-        main()
-    
+    nowdeep = 0
+    while nowdeep <= deep:      
+        nowdeep = nowdeep + 1
+        main()   
     close_dataBase(dataBase)
     show_dataBase(db_file)    

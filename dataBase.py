@@ -5,7 +5,7 @@ import shelve
 #dataBaseFileName 数据库文件名
 def init_dataBase(dataBaseFileName, openstyle = 'c'):
     dataBase = shelve.open(dataBaseFileName, openstyle)    #默认打开方式'c'
-    print "数据库初始化成功"
+    #print "数据库初始化成功".decode('utf-8') 
     return dataBase
 
 
@@ -26,13 +26,13 @@ def add_to_dataBase(dataBase, keyword, url):
 def show_dataBase(dataBaseFileName):
     dataBase = shelve.open(dataBaseFileName)
     print dataBase
-    print "所有数据显示完毕"
+    #print "所有数据显示完毕".decode('utf-8') 
 
 #关闭数据库
 #dataBase数据库句柄
 def close_dataBase(dataBase):
     dataBase.close()
-    print "数据库关闭成功"
+    #print "数据库关闭成功".decode('utf-8') 
     
 
 #测试代码
@@ -46,4 +46,5 @@ if __name__ == '__main__':
     add_to_dataBase(dataBase, None, "u5")
     add_to_dataBase(dataBase, None, "u6")
     close_dataBase(dataBase)
+    print "显示数据库".decode('utf-8') 
     show_dataBase(db_file)
