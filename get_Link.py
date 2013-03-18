@@ -1,16 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-from bs4 import BeautifulSoup
 from urlparse import urljoin
+from lxml import etree
 #从页面获取所有链接
 def get_all_link(page, url):
-    links = []
-    soup = BeautifulSoup(page)
-    content = soup.findAll('a')
-    for item in content:
-        u = urljoin(url, item['href'].encode("utf-8"))
-        links.append(u)
-    return links
+    links = []                                      #用来存放页面链接
+    html = etree.HTML(page)
+    hrefs = html.xpath(u"//a")                      #提取超链接节点
+    for href in hrefs:                              #提取链接
+        newUrl =  urljoin(url,href.attrib['href'])  #整理链接
+        links.append(newUrl)                        #添加
+    print links
+    return links                                    #返回
 
 #测试代码
 if __name__ == '__main__':

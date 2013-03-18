@@ -6,14 +6,12 @@ import os,sys
 def get_page(url):
     try:
         page = urlopen(url).read() 
-        return page
+        return page.lower().decode('utf-8')
     except:
         return ""
 #测试代码   
 if __name__ == '__main__':
     print "---------test start"
-    url =  'http://www.bistu.edu.cn'
-    url = quote(url)
-    print url
-    print get_page('http://www.bistu.edu.cn')
+    url =  'http://www.baidu.com'
+    print get_page(url)
     print "---------test end"
