@@ -8,7 +8,7 @@ def savePage(page, keyword, url):
                 os.mkdir(keyword)
             filedir =  keyword+ '/'+ url.replace('/', '_').replace(':', '_').replace('.', '_') + '.html'
             f = file(filedir, 'w')      #保存页面
-            f.write(page)
+            f.write(page.encode('utf8'))
             f.close()
             return True
     else:                               #关键字为空
@@ -16,6 +16,6 @@ def savePage(page, keyword, url):
             os.mkdir('download')
         filedir =  'download'+ '/'+ url.replace('/', '_').replace(':', '_').replace('.', '_') + '.html'
         f = file(filedir, 'w')          #保存页面
-        f.write(page)
+        f.write(page.encode('utf8'))
         f.close()
         return False

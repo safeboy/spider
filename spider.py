@@ -7,7 +7,7 @@ from dataBase import *
 from save_Page import * 
 
 seedUrl = "http://www.bistu.edu.cn"     #起点url
-deepth = 0                              #深度
+deepth = 1                              #深度
 threadPoolSize = 10                     #线程池大小
 db_file='spider.db'                     #数据库文件
 keyword = None                          #关键字

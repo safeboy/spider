@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 import shelve
-
-
 #初始化数据库
 #dataBaseFileName 数据库文件名
 def init_dataBase(dataBaseFileName, openstyle = 'c'):

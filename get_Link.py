@@ -10,7 +10,6 @@ def get_all_link(page, url):
     for href in hrefs:                              #提取链接
         newUrl =  urljoin(url,href.attrib['href'])  #整理链接
         links.append(newUrl)                        #添加
-    print links
     return links                                    #返回
 
 #测试代码
