@@ -48,3 +48,9 @@ if __name__ == '__main__':
     close_dataBase(dataBase)
     print "显示数据库".decode('utf-8') 
     show_dataBase(db_file)
+
+
+
+
+
+A
